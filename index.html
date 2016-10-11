@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World!</title>
+  </head>
+  <body>
+    <div ng-controller="HelloController">
+      <h2>Hello, {{hello.title}}!</h2>
+    </div>
+    {{3.14159265359 | currency: "&euro;"}}
+
+    <br>
+
+    <input type="text" ng-model="talk">
+
+    <br>
+
+    <p>Yelling: <strong>{{ talk | uppercase }}</strong></p>
+    <p>Whispering: <em>{{ talk | lowercase }}</em></p>
+
+
+    <p>{{3.14159265359 | number:3}}</p>
+    <p>{{3.14159265359 | number:6}}</p>
+    <p>{{3.14159265359 | number:1}}</p>
+
+    <h2>how many digits of pi?</h2>
+    <select ng-model="pi">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <p>Here you go, the first {{ pi }} digits of pi!</p>
+    <p>{{3.14159265359 | number:[pi]}}</p>
+
+    <h2>Super useful tip calculator</h2>
+    <p>How much does your meal cost?</p>
+    <input type="number" ng-model="cost">
+    <p>How much do you want to tip?</p>
+    <select ng-model="tip">
+      <option value=".10">10%</option>
+      <option value=".18">18%</option>
+      <option value=".20">20%</option>
+    </select>
+    <p>Subtotal: {{ cost | currency}}</p>
+    <p>Total: {{ (cost * tip + cost) | currency}}</p>
+
+    <h2>Mad libs</h2>
+
+    <input type="text" ng-model="boyName">
+    <input type="text" ng-model="adj">
+    <input type="text" ng-model="noun1">
+    <input type="text" ng-model="noun2">
+    <input type="text" ng-model="insect">
+    <input type="text" ng-model="noun3">
+    <input type="text" ng-model="verb">
+
+    <h3>I'm in love with <span>{{ boyName }}</span>. He's so <span>{{ adj }}</span>! He has big flat <span>{{ noun1 }}</span>, and when our <span>{{ noun2 }}</span> meet, I get <span>{{ insect }}</span> in my stomach. I've fallen for him like a ton of <span>{{ noun3 }}</span>, and he <span>{{ verb }}</span> for me, too. But I think he's got another girlfriend. What should I do?</h3>
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script>
+    angular.module("myapp", [])
+      .controller("HelloController", function($scope) {
+        $scope.hello = {};
+        $scope.hello.title = "World";
+      });
+    </script>
+  </body>
+</html>
